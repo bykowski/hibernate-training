@@ -4,9 +4,9 @@
         "http://hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
     <session-factory>
-        <property name="hibernate.connection.url">jdbc:mysql://...:3306/...?serverTimezone=Europe/Warsaw</property>
-        <property name="hibernate.connection.username">...</property>
-        <property name="hibernate.connection.password">...</property>
+        <property name="hibernate.connection.url">jdbc:mysql://188.165.16.52:3306/bykowski_jpa?serverTimezone=Europe/Warsaw</property>
+        <property name="hibernate.connection.username">bykowski_jpa</property>
+        <property name="hibernate.connection.password">hibernate</property>
         <property name="hibernate.show_sql">true</property>
         <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQL57Dialect</property>

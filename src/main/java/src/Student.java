@@ -1,23 +1,33 @@
 package src;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.time.LocalDate;
 
 @Entity
+@Table(name = "students")
 public class Student {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     private String name;
     private String surname;
 
+    @Column(name = "grup_id")
+    @Enumerated
+    private GrupId grupId;
+
+    @Column(name = "date_of_birth")
+    private LocalDate dateOfBirth;
+
     public Student() {
     }
 
-    public Student(Long id, String name, String surname) {
-        this.id = id;
+    public Student(String name, String surname, GrupId grupId, LocalDate dateOfBirth) {
         this.name = name;
         this.surname = surname;
+        this.grupId = grupId;
+        this.dateOfBirth = dateOfBirth;
     }
 
     public Long getId() {
@@ -44,12 +54,23 @@ public class Student {
         this.surname = surname;
     }
 
+
+    public GrupId getGrupId() {
+        return grupId;
+    }
+
+    public void setGrupId(GrupId grupId) {
+        this.grupId = grupId;
+    }
+
+
     @Override
     public String toString() {
         return "Student{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
+                ", grupId=" + grupId +
                 '}';
     }
 }
