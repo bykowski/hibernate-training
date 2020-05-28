@@ -1,7 +1,7 @@
-package src;
+package src.model;
 
 import javax.persistence.*;
-import java.time.LocalDate;
+import java.util.Set;
 
 @Entity
 @Table(name = "students")
@@ -17,17 +17,36 @@ public class Student {
     @Enumerated
     private GrupId grupId;
 
-    @Column(name = "date_of_birth")
-    private LocalDate dateOfBirth;
+    @OneToOne
+    private Backpack backpack;
+
+
+    @ManyToMany(mappedBy = "studentSet")
+    private Set<Professor> professorSet;
 
     public Student() {
     }
 
-    public Student(String name, String surname, GrupId grupId, LocalDate dateOfBirth) {
+    public Student(String name, String surname, GrupId grupId) {
         this.name = name;
         this.surname = surname;
         this.grupId = grupId;
-        this.dateOfBirth = dateOfBirth;
+    }
+
+    public Set<Professor> getProfessorSet() {
+        return professorSet;
+    }
+
+    public void setProfessorSet(Set<Professor> professorSet) {
+        this.professorSet = professorSet;
+    }
+
+    public Backpack getBackpack() {
+        return backpack;
+    }
+
+    public void setBackpack(Backpack backpack) {
+        this.backpack = backpack;
     }
 
     public Long getId() {
